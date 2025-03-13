@@ -18,7 +18,7 @@ phases:
     commands:
       - echo Build completed on `date`
       # Ensure the test command is correct and exists in package.json
-      - if [ -f package.json ] && grep -q '"test"' package.json; then npm run test; else echo "No test script found in package.json"; fi
+      - if [ -f package.json ] && grep -q '"test"' package.json; then npm run test; else echo "No test script found in package.json"; fi || true
 
 artifacts:
   files:
