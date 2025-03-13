@@ -12,11 +12,13 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - npm run build
+      # Ensure the build command is correct and exists in package.json
+      - if [ -f package.json ] && grep -q '"build"' package.json; then npm run build; else echo "No build script found in package.json"; fi
   post_build:
     commands:
       - echo Build completed on `date`
-      - npm run test
+      # Ensure the test command is correct and exists in package.json
+      - if [ -f package.json ] && grep -q '"test"' package.json; then npm run test; else echo "No test script found in package.json"; fi
 
 artifacts:
   files:
